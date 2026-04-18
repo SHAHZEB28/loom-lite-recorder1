@@ -55,14 +55,13 @@ Explore the live app here: [loom-lite-recorder1.vercel.app](https://loom-lite-re
 ```mermaid
 stateDiagram-v2
     [*] --> Idle
-    Idle --> Requesting : Click Start Recording
-    Requesting --> Recording : Permission granted
-    Requesting --> Idle : User cancels / denies
-    Recording --> Stopped : Click Stop Recording
-    Recording --> Idle : Stream ends unexpectedly
-    Stopped --> Preview : Video processed
-    Preview --> Idle : Click Record Again
-    Preview --> [*] : Download .webm
+    Idle --> Requesting: Click Start Recording
+    Requesting --> Recording: Permission granted
+    Requesting --> Idle: Cancelled or denied
+    Recording --> Preview: Click Stop Recording
+    Recording --> Idle: Stream ends unexpectedly
+    Preview --> Idle: Click Record Again
+    Preview --> [*]: Download .webm
 ```
 
 ## Run Locally 🚀
