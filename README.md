@@ -13,9 +13,9 @@
 
 </div>
 
-## Demo
+## Live Demo
 
-Explore the app here: [loom-lite-recorder1.vercel.app](https://loom-lite-recorder1.vercel.app/)
+Explore the live app here: [loom-lite-recorder1.vercel.app](https://loom-lite-recorder1.vercel.app/)
 
 ## Features ✨
 
@@ -36,15 +36,19 @@ Explore the app here: [loom-lite-recorder1.vercel.app](https://loom-lite-recorde
 - `navigator.mediaDevices.getDisplayMedia`
 - CSS for custom UI styling
 
-## Screenshots 🖼️
+## Screenshots 📸
 
-> Add product screenshots here to showcase the recording flow, preview state, and dark mode UI.
+**Home / Idle State**
 
-```md
-![Home Screen](./screenshots/home.png)
-![Recording State](./screenshots/recording.png)
-![Preview State](./screenshots/preview.png)
-```
+![Home / Idle State](./home.png)
+
+**Recording in Progress**
+
+![Recording in Progress](./duringrecording.png)
+
+**Preview & Download**
+
+![Preview & Download](./preview.png)
 
 ## Run Locally 🚀
 
