@@ -68,3 +68,26 @@ This sequence reflects product value first: make recordings shareable, then make
 - I focused on quality over quantity
 - The result is a stable, usable MVP with a clear upgrade path
 - For a short take-home assignment, I believe strong prioritization is more important than feature volume
+
+## 8. How I Used AI in This Project
+
+AI was a core part of the workflow, not an afterthought.
+
+**Prompting for architecture** — I used Claude to pressure-test the state 
+machine early. I described the recording flow and asked what edge cases I 
+was missing. It surfaced the "cancelled picker" case and the interrupted 
+stream scenario, both of which I then implemented.
+
+**Codex for implementation** — I used Codex to scaffold the MediaRecorder 
+setup, the track cleanup logic, and the object URL revocation on reset. 
+Rather than accepting output blindly, I reviewed each block and adjusted 
+for browser-specific behavior (especially around Firefox audio constraints).
+
+**Claude for this document** — I used Claude to review drafts of this 
+reasoning document and identify gaps. The "SaaS is dead" business model 
+section was added after Claude flagged that the brief mentioned it and 
+my original doc ignored it entirely.
+
+**Where I didn't use AI** — manual testing of the full recording flow, 
+permission denial handling, and the dark mode UX decisions. These required 
+real browser interaction that AI cannot simulate.
