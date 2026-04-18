@@ -5,11 +5,11 @@
 ### A polished Loom-style screen recorder built with React + Vite for quick browser-based capture, preview, and download.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge)](https://loom-lite-recorder1.vercel.app/)
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-111827?style=for-the-badge&logo=github)](https://github.com/SHAHZEB28/Loom-Lite-Recorder)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-111827?style=for-the-badge&logo=github)](https://github.com/SHAHZEB28/loom-lite-recorder1)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-[Live Demo](https://loom-lite-recorder1.vercel.app/) • [GitHub Repository](https://github.com/SHAHZEB28/Loom-Lite-Recorder)
+[Live Demo](https://loom-lite-recorder1.vercel.app/) • [GitHub Repository](https://github.com/SHAHZEB28/loom-lite-recorder1)
 
 </div>
 
@@ -40,28 +40,43 @@ Explore the live app here: [loom-lite-recorder1.vercel.app](https://loom-lite-re
 
 **Home / Idle State**
 
-![Home / Idle State](./home.png)
+![Home / Idle State](./screenshots/home.png)
 
 **Recording in Progress**
 
-![Recording in Progress](./duringrecording.png)
+![Recording in Progress](./screenshots/duringrecording.png)
 
 **Preview & Download**
 
-![Preview & Download](./preview.png)
+![Preview & Download](./screenshots/preview.png)
+
+## Recording Flow
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Requesting : Click Start Recording
+    Requesting --> Recording : Permission granted
+    Requesting --> Idle : User cancels / denies
+    Recording --> Stopped : Click Stop Recording
+    Recording --> Idle : Stream ends unexpectedly
+    Stopped --> Preview : Video processed
+    Preview --> Idle : Click Record Again
+    Preview --> [*] : Download .webm
+```
 
 ## Run Locally 🚀
 
 1. Clone the repository
 
 ```bash
-git clone https://github.com/SHAHZEB28/Loom-Lite-Recorder.git
+git clone https://github.com/SHAHZEB28/loom-lite-recorder1.git
 ```
 
 2. Move into the project folder
 
 ```bash
-cd Loom-Lite-Recorder
+cd loom-lite-recorder1
 ```
 
 3. Install dependencies
@@ -113,4 +128,4 @@ npm run dev
 **Shahzeb Hussain**
 
 - GitHub: [SHAHZEB28](https://github.com/SHAHZEB28)
-- Project: [Loom Lite Recorder](https://github.com/SHAHZEB28/Loom-Lite-Recorder)
+- Project: [Loom Lite Recorder](https://github.com/SHAHZEB28/loom-lite-recorder1)
