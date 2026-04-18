@@ -95,6 +95,7 @@ function App() {
           error={error}
           elapsedSeconds={elapsedSeconds}
           hasRecording={hasRecording}
+          recordedBlob={recordedBlob}
           recordingUrl={recordingUrl}
           status={status}
         />
