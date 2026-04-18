@@ -2,6 +2,10 @@
 
 This project was scoped as a 2-day MVP. The goal was not to imitate all of Loom, but to ship a stable end-to-end recording flow that feels usable and intentional.
 
+## 0. Why Free? The "SaaS is Dead" Angle
+
+Mythical Enterprises is betting that removing the paywall is itself the product strategy. The "SaaS is dead" thesis means frictionless access is the moat, not feature gating. The sustainable model for this is open-core: the recorder stays free and browser-based forever, while a future paid tier unlocks cloud storage, team workspaces, and viewer analytics. This keeps acquisition cost near zero while creating a natural upgrade path for teams who outgrow local-only recording.
+
 ## 1. What I Built in 2 Days
 
 - A browser-based screen recorder using `getDisplayMedia` and `MediaRecorder`
