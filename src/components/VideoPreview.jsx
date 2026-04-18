@@ -1,11 +1,9 @@
-function formatElapsedTime(totalSeconds) {
-  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
-  const seconds = String(totalSeconds % 60).padStart(2, '0');
+import { useState } from 'react';
+import { formatElapsedTime } from '../utils/formatTime';
 
-  return `${minutes}:${seconds}`;
-}
+function VideoPreview({ error, elapsedSeconds, recordingUrl, hasRecording, recordedBlob, status }) {
+  const [filename, setFilename] = useState('screen-recording');
 
-function VideoPreview({ error, elapsedSeconds, recordingUrl, hasRecording, status }) {
   if (!hasRecording || !recordingUrl) {
     const emptyState = {
       idle: {
@@ -59,10 +57,26 @@ function VideoPreview({ error, elapsedSeconds, recordingUrl, hasRecording, statu
           <p className="preview-subtext">
             Local recording complete{elapsedSeconds ? ` • ${formatElapsedTime(elapsedSeconds)}` : ''}.
           </p>
+          {recordedBlob && (
+            <p className="preview-subtext">
+              File size: {(recordedBlob.size / (1024 * 1024)).toFixed(2)} MB
+            </p>
+          )}
         </div>
-        <a className="download-link" href={recordingUrl} download="screen-recording.webm">
-          Download Video
-        </a>
+        <div className="download-row">
+          <input
+            className="filename-input"
+            type="text"
+            value={filename}
+            onChange={(e) => setFilename(e.target.value || 'screen-recording')}
+            placeholder="screen-recording"
+            aria-label="File name"
+          />
+          <span className="filename-ext">.webm</span>
+          <a className="download-link" href={recordingUrl} download={`${filename}.webm`}>
+            Download
+          </a>
+        </div>
       </div>
 
       <div className="video-frame">
