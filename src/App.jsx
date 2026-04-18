@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import RecorderControls from './components/RecorderControls';
 import VideoPreview from './components/VideoPreview';
+import WebcamBubble from './components/WebcamBubble';
 import useScreenRecorder from './hooks/useScreenRecorder';
 
 const themeStorageKey = 'loom-lite-theme';
@@ -26,6 +27,9 @@ function App() {
     elapsedSeconds,
     recordingUrl,
     recordedBlob,
+    webcamEnabled,
+    toggleWebcam,
+    webcamStreamRef,
     startRecording,
     stopRecording,
     clearRecording,
@@ -88,6 +92,8 @@ function App() {
             onStart={startRecording}
             onStop={stopRecording}
             status={status}
+            toggleWebcam={toggleWebcam}
+            webcamEnabled={webcamEnabled}
           />
         </section>
 
@@ -100,6 +106,7 @@ function App() {
           status={status}
         />
       </div>
+      <WebcamBubble webcamStreamRef={webcamStreamRef} webcamEnabled={webcamEnabled} />
     </main>
   );
 }

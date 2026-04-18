@@ -468,6 +468,12 @@ h2 {
   box-shadow: var(--control-shadow);
 }
 
+.webcam-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
 :root[data-theme='dark'] .secondary-button,
 :root[data-theme='dark'] .download-link {
   color: #0d1320;

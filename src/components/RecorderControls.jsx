@@ -5,6 +5,8 @@ function RecorderControls({
   status,
   error,
   hasRecording,
+  webcamEnabled,
+  toggleWebcam,
   onStart,
   onStop,
   onClear,
@@ -76,6 +78,13 @@ function RecorderControls({
         </button>
         <button className="secondary-button" onClick={onStop} disabled={!isRecording}>
           Stop Recording
+        </button>
+        <button
+          className={`secondary-button ${webcamEnabled ? 'webcam-active' : ''}`}
+          onClick={toggleWebcam}
+          type="button"
+        >
+          {webcamEnabled ? 'Webcam On' : 'Webcam Off'}
         </button>
         <button className="ghost-button" onClick={onClear} disabled={!canClear}>
           Clear

@@ -23,9 +23,11 @@ function useScreenRecorder() {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [recordedBlob, setRecordedBlob] = useState(null);
   const [recordingUrl, setRecordingUrl] = useState('');
+  const [webcamEnabled, setWebcamEnabled] = useState(false);
 
   const mediaRecorderRef = useRef(null);
   const streamRef = useRef(null);
+  const webcamStreamRef = useRef(null);
   const chunksRef = useRef([]);
   const recordingUrlRef = useRef('');
   const statusRef = useRef(initialStatus);
@@ -56,6 +58,13 @@ function useScreenRecorder() {
 
       mediaRecorderRef.current = null;
       stopTracks();
+
+      if (webcamStreamRef.current) {
+        webcamStreamRef.current.getTracks().forEach((track) => {
+          track.stop();
+        });
+        webcamStreamRef.current = null;
+      }
     };
   }, []);
 
@@ -104,6 +113,28 @@ function useScreenRecorder() {
 
     if (recorder && recorder.state !== 'inactive') {
       recorder.stop();
+    }
+  };
+
+  const toggleWebcam = async () => {
+    try {
+      if (webcamEnabled) {
+        if (webcamStreamRef.current) {
+          webcamStreamRef.current.getTracks().forEach((track) => {
+            track.stop();
+          });
+          webcamStreamRef.current = null;
+        }
+
+        setWebcamEnabled(false);
+        return;
+      }
+
+      const webcamStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      webcamStreamRef.current = webcamStream;
+      setWebcamEnabled(true);
+    } catch (caughtError) {
+      console.error(caughtError);
     }
   };
 
@@ -249,9 +280,12 @@ function useScreenRecorder() {
     error,
     recordedBlob,
     recordingUrl,
+    webcamEnabled,
+    webcamStreamRef,
     startRecording,
     stopRecording,
     clearRecording,
+    toggleWebcam,
   };
 }
 
